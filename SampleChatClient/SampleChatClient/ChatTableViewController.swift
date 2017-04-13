@@ -16,18 +16,20 @@ class ChatTableViewController: UITableViewController {
     var chats: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
         tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.onDrag
+        
         queryMessages()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+ 
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatTableViewController.onTimer), userInfo: nil, repeats: true)
     }
     
     func queryMessages() {
         let query = PFQuery(className:"Message")
-        
+        query.addDescendingOrder("createdAt")
+        query.includeKey("user")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             
@@ -38,9 +40,17 @@ class ChatTableViewController: UITableViewController {
                 if let objects = objects {
                     for object in objects {
                         //print(object.objectId)
-                        if object["text"] != nil {
-                            self.chats.append((PFUser.current()?.username)! + ": " + (object["text"] as! String))
+                        let user_ = object["user"]
+                        var username_ = ""
+                        if user_ != nil {
+                            username_ = (user_ as! PFUser).username ?? ""
+                            
                         }
+                        if object["text"] != nil {
+                            self.chats.append(username_ + ": " + (object["text"] as! String))
+                            //self.chats.append(object["text"] as! String)
+                        }
+                        
                         
                     }
                     self.tableView.reloadData()
@@ -51,10 +61,18 @@ class ChatTableViewController: UITableViewController {
             }
         }
     }
+    
+    func onTimer() {
+        chats.removeAll()
+        tableView.reloadData()
+        
+        queryMessages()
+    }
 
     @IBAction func onSendClick(_ sender: Any) {
         let message_ = PFObject(className:"Message")
         message_["text"] = chatTextField.text
+        message_["user"] = PFUser.current()
         message_.saveInBackground {
             (success: Bool, error: Error?) -> Void in
             if (success) {
@@ -88,7 +106,8 @@ class ChatTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
-
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.textLabel?.text = chats[indexPath.row]
 
         return cell

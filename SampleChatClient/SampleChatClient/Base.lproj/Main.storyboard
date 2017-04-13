@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,23 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gauri" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erd-pN-kl5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gauri" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erd-pN-kl5">
                                 <rect key="frame" x="45" y="231" width="285" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gauri" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZb-bU-mpe">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gauri" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZb-bU-mpe">
                                 <rect key="frame" x="45" y="283" width="285" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXW-h4-JkS">
-                                <rect key="frame" x="45" y="346" width="285" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXW-h4-JkS">
+                                <rect key="frame" x="45" y="346" width="285" height="30"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,9 +44,8 @@
                                     <action selector="onLogInClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dna-Op-5ll"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFQ-6N-Oic">
-                                <rect key="frame" x="45" y="399" width="285" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFQ-6N-Oic">
+                                <rect key="frame" x="45" y="399" width="285" height="30"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,6 +56,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="erd-pN-kl5" secondAttribute="trailing" constant="29" id="65S-ss-L77"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BZb-bU-mpe" secondAttribute="trailing" constant="29" id="LFC-56-ySV"/>
+                            <constraint firstItem="oFQ-6N-Oic" firstAttribute="top" secondItem="zXW-h4-JkS" secondAttribute="bottom" constant="23" id="M4w-1w-Ggj"/>
+                            <constraint firstItem="erd-pN-kl5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="211" id="N7a-Z3-kRe"/>
+                            <constraint firstItem="zXW-h4-JkS" firstAttribute="top" secondItem="BZb-bU-mpe" secondAttribute="bottom" constant="33" id="OqK-ee-W9p"/>
+                            <constraint firstItem="BZb-bU-mpe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="PRA-Gv-Wvn"/>
+                            <constraint firstItem="oFQ-6N-Oic" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="QsV-vj-kDa"/>
+                            <constraint firstItem="zXW-h4-JkS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="Sfi-rQ-C7V"/>
+                            <constraint firstItem="BZb-bU-mpe" firstAttribute="top" secondItem="erd-pN-kl5" secondAttribute="bottom" constant="22" id="ZYb-Td-Gxn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oFQ-6N-Oic" secondAttribute="trailing" constant="29" id="cJw-fD-W8n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zXW-h4-JkS" secondAttribute="trailing" constant="29" id="fQQ-Ek-5uB"/>
+                            <constraint firstItem="erd-pN-kl5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="qbJ-yL-gZY"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="BZb-bU-mpe" id="Lrt-C0-buS"/>

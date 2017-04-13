@@ -18,6 +18,7 @@
 		E7DFCA7B1E9ECA46004056E6 /* SampleChatClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCA7A1E9ECA46004056E6 /* SampleChatClientTests.swift */; };
 		E7DFCA861E9ECA46004056E6 /* SampleChatClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCA851E9ECA46004056E6 /* SampleChatClientUITests.swift */; };
 		E7DFCA941E9ECC02004056E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCA931E9ECC02004056E6 /* LoginViewController.swift */; };
+		E7DFCA961E9F2203004056E6 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCA951E9F2203004056E6 /* ChatTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E7DFCA851E9ECA46004056E6 /* SampleChatClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleChatClientUITests.swift; sourceTree = "<group>"; };
 		E7DFCA871E9ECA46004056E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7DFCA931E9ECC02004056E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E7DFCA951E9F2203004056E6 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				E7DFCA711E9ECA46004056E6 /* Info.plist */,
 				E7DFCA691E9ECA46004056E6 /* SampleChatClient.xcdatamodeld */,
 				E7DFCA931E9ECC02004056E6 /* LoginViewController.swift */,
+				E7DFCA951E9F2203004056E6 /* ChatTableViewController.swift */,
 			);
 			path = SampleChatClient;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				E7DFCA941E9ECC02004056E6 /* LoginViewController.swift in Sources */,
 				E7DFCA6B1E9ECA46004056E6 /* SampleChatClient.xcdatamodeld in Sources */,
 				E7DFCA631E9ECA46004056E6 /* AppDelegate.swift in Sources */,
+				E7DFCA961E9F2203004056E6 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

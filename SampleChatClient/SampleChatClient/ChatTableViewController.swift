@@ -7,19 +7,67 @@
 //
 
 import UIKit
+import Parse
 
 class ChatTableViewController: UITableViewController {
 
+    @IBOutlet weak var chatTextField: UITextField!
+    
+    var chats: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.onDrag
+        queryMessages()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    func queryMessages() {
+        let query = PFQuery(className:"Message")
+        
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            
+            if error == nil && objects != nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        //print(object.objectId)
+                        if object["text"] != nil {
+                            self.chats.append((PFUser.current()?.username)! + ": " + (object["text"] as! String))
+                        }
+                        
+                    }
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                print(error ?? "messages error")
+            }
+        }
+    }
 
+    @IBAction func onSendClick(_ sender: Any) {
+        let message_ = PFObject(className:"Message")
+        message_["text"] = chatTextField.text
+        message_.saveInBackground {
+            (success: Bool, error: Error?) -> Void in
+            if (success) {
+                self.chats.append(self.chatTextField.text!)
+                self.tableView.reloadData()
+                self.chatTextField.text = ""
+                // The object has been saved.
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -28,24 +76,24 @@ class ChatTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+  
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+
+        return chats.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = chats[indexPath.row]
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
